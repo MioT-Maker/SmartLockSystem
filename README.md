@@ -155,9 +155,11 @@ Dashboard / Mobile App
 
 ## 📸 Media (To Do)
 
-- 회로도  
-- 실제 동작 영상  
+- 회로도
+  <img width="1374" height="1074" alt="image" src="https://github.com/user-attachments/assets/fa8bcecf-e399-4771-b75c-3739557d90aa" />
+<br>
 - Dashboard 캡처  
+<img width="2692" height="834" alt="image" src="https://github.com/user-attachments/assets/9d7ce9a5-3220-4573-9dd3-84f0be89f6f0" />
 
 ---
 

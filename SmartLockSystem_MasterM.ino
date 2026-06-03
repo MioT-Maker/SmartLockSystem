@@ -1,5 +1,3 @@
-#include "arduino_secrets.h"
-
 #include <SPI.h>
 #include <MFRC522.h>
 #include <DHT.h>
@@ -32,13 +30,13 @@ const unsigned long interval = 5000;
 unsigned long doorOpenMillis = 0;
 const unsigned long doorOpenTime = 5000;
 
-// íì©ë ì¹´ë UUID
+// 허용된 카드 UUID
 String VALID_CARD_UUID = "B9 E1 E2 B9";
 
-// Door ìí
+// Door 상태
 bool doorOpen = false;
 
-// LCD íìì© ìí
+// LCD 표시용 상태
 bool doorDisplayState = false;
 
 void setup() {
@@ -64,7 +62,7 @@ void setup() {
   // RC522 begin
   SPI.begin();
   rfid.PCD_Init();
-  Serial.println("ì¹´ë ìë ¥ ëê¸°");
+  Serial.println("카드 입력 대기");
 
   // LCD begin
   lcd.begin();
@@ -78,7 +76,7 @@ void loop() {
 
   unsigned long currentMillis = millis();
 
-  // ë¬¸ì´ ì´ë¦° ìíë¼ë©´ 5ì´ í ë«ê¸°
+  // 문이 열린 상태라면 5초 후 닫기
   if (doorOpen == true) {
     if (currentMillis - doorOpenMillis >= doorOpenTime) {
       closeDoor();
@@ -86,7 +84,7 @@ void loop() {
     return;
   }
 
-  // 5ì´ë§ë¤ ì¤í
+  // 5초마다 실행
   if (currentMillis - previousMillis >= interval) {
     previousMillis = currentMillis;
 
@@ -200,7 +198,7 @@ void printDefaultLCD() {
 }
 
 /*
-  Cloudìì CardUUID ë³ê²½ ì
+  Cloud에서 CardUUID 변경 시
 */
 void onCardUUIDChange() {
   Serial.print("CardUUID changed from Cloud: ");
@@ -210,7 +208,7 @@ void onCardUUIDChange() {
 }
 
 /*
-  Cloudìì DoorOpen ë³ê²½ ì
+  Cloud에서 DoorOpen 변경 시
 */
 void onDoorOpenChange() {
   if (DoorOpen == true) {

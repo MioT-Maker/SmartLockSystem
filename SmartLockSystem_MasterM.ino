@@ -134,13 +134,13 @@ void readRFIDOnce() {
 
   readUuid.toUpperCase();
 
-  Serial.print("Card UID: ");
+  Serial.print("readCard UUID:");
   Serial.println(readUuid);
-
-  CardUUID = readUuid;
 
   if (readUuid == VALID_CARD_UUID) {
     openDoor();
+    Serial.print("Valid Card:");
+    Serial.println(readUuid);
   } 
   else {
     Serial.println("Invalid Card");
@@ -201,7 +201,7 @@ void printDefaultLCD() {
   Cloud에서 CardUUID 변경 시
 */
 void onCardUUIDChange() {
-  Serial.print("CardUUID changed from Cloud: ");
+  Serial.print("CardUUID changed from Cloud:");
   Serial.println(CardUUID);
 
   VALID_CARD_UUID = CardUUID;
